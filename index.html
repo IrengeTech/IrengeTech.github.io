@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+
+<html lang="en">
+   <head>
+	  <meta charset="UTF-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	  <meta name="description" content="Portfolio of Irenge Dekandol, Information Technology graduate and aspiring Software Engineer specializing in web technologies and backend development.">
+	  <meta name="keywords" content="Software Engineer, Portfolio, PostgreSQL, Java, JavaScript, React, Node.js, MySQL, GitHub">
+	  <meta name="author" content="Irenge Dekandol">
+
+       <title>Irenge Dekandol | Software Engineer Portfolio</title>
+
+        <style>
+			*{
+			  margin:0;
+			  padding:0;
+			  box-sizing:border-box;
+			}
+
+			html{
+			  scroll-behavior:smooth;
+			}
+
+			body{
+			  font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+			  background:#f8fafc;
+			  color:#333;
+			  line-height:1.7;
+			}
+
+			.container{
+			  width:90%;
+			  max-width:1200px;
+			  margin:auto;
+			}
+
+			/* Header */
+
+			header{
+			  position:sticky;
+			  top:0;
+			  z-index:1000;
+			  background:#1e293b;
+			  box-shadow:0 2px 10px rgba(0,0,0,.15);
+			}
+
+			header .container {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				gap: 15px;
+			}
+
+			.logo{
+			  color:white;
+			  font-size:1.8rem;
+			  font-weight:700;
+			}
+
+			nav ul{
+			  display:flex;
+			  list-style:none;
+			  gap:1rem;
+			}
+
+			nav a{
+			  color:white;
+			  text-decoration:none;
+			  padding:.6rem .8rem;
+			  border-radius:5px;
+			  transition:.3s;
+			}
+
+			nav a:hover,
+			nav a.active{
+			  background:#334155;
+			  color:#38bdf8;
+			}
+
+			/* toggle*/
+			.theme-toggle {
+			  background: #0ea5e9;
+			  color: white;
+			  border: none;
+			  padding: 10px 15px;
+			  border-radius: 6px;
+			  cursor: pointer;
+			  font-weight: 600;
+			  transition: 0.3s;
+			}
+
+			.theme-toggle:hover {
+				opacity: 0.9;
+			}
+
+			/* page */
+			.page{
+			  display:none;
+			  padding:4rem 0;
+			  min-height:80vh;
+			  animation:fade .5s ease;
+			}
+
+			.page.active{
+			  display:block;
+			}
+
+			@keyframes fade{
+			  from{
+				opacity:0;
+				transform:translateY(10px);
+			  }
+			  to{
+				opacity:1;
+				transform:translateY(0);
+			  }
+			}
+
+			/* Hero */
+
+			.hero{
+			  background:linear-gradient(135deg,#0ea5e9,#1e293b);
+			  color:white;
+			  text-align:center;
+			  padding:5rem 1rem;
+			  border-radius:0 0 20px 20px;
+			}
+
+			.hero img{
+			  width:260px;
+			  height:260px;
+			  object-fit:cover;
+			  border-radius:50%;
+			  border:5px solid white;
+			  box-shadow:0 8px 25px rgba(0,0,0,.25);
+			  transition:.4s;
+			  margin-bottom:1.5rem;
+			}
+
+			.hero img:hover{
+			  transform:scale(1.05);
+			}
+
+			.hero h2{
+			  font-size:3rem;
+			  margin-bottom:1rem;
+			}
+
+			.hero p{
+			  font-size:1.2rem;
+			  max-width:700px;
+			  margin:auto;
+			}
+
+			.hero-buttons{
+			  margin-top:2rem;
+			  display:flex;
+			  justify-content:center;
+			  gap:1rem;
+			  flex-wrap:wrap;
+			}
+
+			.btn{
+			  text-decoration:none;
+			  padding:12px 24px;
+			  border-radius:8px;
+			  font-weight:600;
+			  transition:.3s;
+			}
+
+			.btn-primary{
+			  background:white;
+			  color:#1e293b;
+			}
+
+			.btn-primary:hover{
+			  transform:translateY(-3px);
+			}
+
+			.btn-secondary{
+			  border:2px solid white;
+			  color:white;
+			}
+
+			.btn-secondary:hover{
+			  background:white;
+			  color:#1e293b;
+			}
+
+			section h2{
+			  text-align:center;
+			  margin-bottom:2rem;
+			  color:#1e293b;
+			  font-size:2.3rem;
+			}
+
+			/* Cards */
+
+			.card{
+			  background:white;
+			  border-radius:12px;
+			  padding:2rem;
+			  box-shadow:0 4px 15px rgba(0,0,0,.08);
+			}
+
+			/* About */
+
+			.about-content{
+			  max-width:900px;
+			  margin:auto;
+			  font-size:1.1rem;
+			}
+			
+			.education-card {
+			  text-align: left;
+			  max-width: 700px;
+			  margin: 0 auto;
+			}
+
+			/* Skills */
+
+			.skills-grid{
+			  display:grid;
+			  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+			  gap:1rem;
+			}
+
+			.skill{
+			  background:white;
+			  padding:1rem;
+			  text-align:center;
+			  border-radius:10px;
+			  box-shadow:0 2px 10px rgba(0,0,0,.08);
+			  transition:.3s;
+			}
+
+			.skill:hover{
+			  transform:translateY(-5px);
+			}
+
+			/* Projects */
+
+			.projects-grid{
+			  display:grid;
+			  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+			  gap:1.5rem;
+			}
+
+			.project-card{
+			  text-decoration:none;
+			  color:inherit;
+			  background:white;
+			  padding:1.5rem;
+			  border-radius:12px;
+			  box-shadow:0 2px 10px rgba(0,0,0,.08);
+			  transition:.3s;
+			  display:block;
+			}
+
+			.project-card:hover{
+			  transform:translateY(-8px);
+			  box-shadow:0 8px 25px rgba(0,0,0,.12);
+			}
+
+			.project-card h3{
+			  margin-bottom:.75rem;
+			  color:#1e293b;
+			}
+
+			.project-card p{
+			  font-size:.95rem;
+			}
+
+			.github-section{
+			  text-align:center;
+			  margin-top:2rem;
+			}
+
+			.github-btn{
+			  display:inline-block;
+			  background:#1e293b;
+			  color:white;
+			  text-decoration:none;
+			  padding:12px 25px;
+			  border-radius:8px;
+			  transition:.3s;
+			}
+
+			.github-btn:hover{
+			  background:#0ea5e9;
+			}
+			.certifications-card {
+			  text-align: left;
+			  max-width: 700px;
+			  margin: 0 auto;
+			}
+
+			/* Contact */
+
+			.contact-links{
+			  text-align:center;
+			  font-size:1.1rem;
+			}
+
+			.contact-links p{
+			  margin-bottom:1rem;
+			}
+
+			.contact-links a{
+			  color:#0ea5e9;
+			  text-decoration:none;
+			}
+
+			.contact-links a:hover{
+			  text-decoration:underline;
+			}
+
+			footer{
+			  background:#1e293b;
+			  color:white;
+			  text-align:center;
+			  padding:2rem;
+			  margin-top:3rem;
+			}
+
+			@media(max-width:768px){
+
+			  header .container{
+				flex-direction:column;
+			  }
+
+			  nav ul{
+				flex-wrap:wrap;
+				justify-content:center;
+				margin-top:1rem;
+			  }
+
+			  .hero h2{
+				font-size:2rem;
+			  }
+
+			  .hero img{
+				width:200px;
+				height:200px;
+			  }
+			}
+			/* Dark Mode */
+
+			body.dark-mode {
+				background: #0f172a;
+				color: #e2e8f0;
+			}
+
+			body.dark-mode .card,
+			body.dark-mode .project-card,
+			body.dark-mode .skill {
+				background: #1e293b;
+				color: #e2e8f0;
+			}
+
+			body.dark-mode h2,
+			body.dark-mode h3 {
+				color: #38bdf8;
+			}
+
+			body.dark-mode header {
+				background: #020617;
+			}
+
+			body.dark-mode footer {
+				background: #020617;
+			}
+
+			body.dark-mode nav a:hover,
+			body.dark-mode nav a.active {
+				background: #334155;
+			}
+
+			body.dark-mode .github-btn {
+				background: #38bdf8;
+				color: #0f172a;
+			}
+
+			body.dark-mode .github-btn:hover {
+				background: #7dd3fc;
+			}
+
+			body.dark-mode a {
+				color: #7dd3fc;
+			}
+       </style>
+
+    </head>
+
+   <body>
+
+		<header>
+		  <div class="container">
+			<div class="logo">Irenge Dekandol</div>
+
+
+		 <nav>
+		   <ul>
+			 <li><a href="#home" class="nav-link active" data-page="home">Home</a></li>
+			 <li><a href="#about" class="nav-link" data-page="about">About</a></li>
+			 <li><a href="#education" class="nav-link" data-page="education">Education</a></li>
+			 <li><a href="#skills" class="nav-link" data-page="skills">Skills</a></li>
+			 <li><a href="#projects" class="nav-link" data-page="projects">Projects</a></li>
+			 <li><a href="#certifications" class="nav-link" data-page="certifications">Certifications</a></li>
+			 <li><a href="#contact" class="nav-link" data-page="contact">Contact</a></li>
+		   </ul>
+		 </nav>
+		  <button id="theme-toggle" class="theme-toggle">
+			🌙 Dark Mode
+		  </button>
+
+
+		  </div>
+		</header>
+		<main>
+
+		  <!-- HOME -->
+
+			 <section id="home" class="page active">
+				<div class="hero">
+				  <div class="container">
+
+
+						<img src="images/DekandolPortfolio.jpg"
+						 alt="Irenge Dekandol">
+
+						  <h2>Hi, I'm Irenge Dekandol</h2>
+
+						<p>
+
+							  Information Technology Graduate • Software Developer •
+							  Backend Development Enthusiast • Based in Charlotte, NC
+
+						</p>
+
+					   <div class="hero-buttons">
+
+							  <a href="assets/Irenge_Resume.pdf"
+								 target="_blank"
+								 class="btn btn-primary">
+								 Download Resume
+							  </a>
+
+							  <a href="https://github.com/IrengeTech"
+								 target="_blank"
+								 class="btn btn-secondary">
+								 Visit GitHub
+							</a>
+
+						</div>
+
+					</div>
+				</div>
+
+
+		   </section>
+
+		  <!-- ABOUT -->
+
+		  <section id="about" class="page">
+			<div class="container">
+
+
+			  <h2>About Me</h2>
+
+			  <div class="card about-content">
+
+				<p>
+				  I am Irenge Dekandol, an Information Technology graduate
+				  from Central Piedmont Community College (CPCC), where 
+				  I earned an Associate in Applied Science with 
+				  a concentration in Software Development in 2026. 
+				  I am passionate about creating software solutions that 
+				  solve real-world problems and improve user experiences.
+				</p>
+
+				<br>
+
+				<p>
+				  My interests include software development, backend engineering, 
+				  web technologies, database management, RESTful APIs, and modern 
+				  software engineering practices. Throughout my academic journey, 
+				  I have built projects using Java, JavaScript, Node.js, React, MySQL, 
+				  HTML, CSS, Git, and GitHub while continuously strengthening 
+				  my technical and problem-solving skills.
+				</p>
+
+				<br>
+
+				<p>
+				  Beyond the classroom, I have expanded my knowledge through self-directed learning 
+				  using professional resources such as LinkedIn Learning, W3Schools, technical documentation, 
+				  YouTube tutorials, and developer communities. This commitment to continuous learning 
+				  has allowed me to stay current with industry trends and modern development practices.
+				</p>
+
+				<br>
+
+				<p>
+				  Currently, I am pursuing industry-recognized certifications including 
+				  CompTIA A+, CompTIA Network+, and CompTIA Security+ to further strengthen 
+				  my expertise in information technology, networking, cybersecurity, and enterprise systems.
+				</p>
+
+			  </div>
+
+			</div>
+
+
+		  </section>
+
+		  <section id="education" class="page">
+			<div class="container">
+			
+			  <h2>Education</h2>
+
+				<div class="card education-card">
+				  <h3>🎓Central Piedmont Community College</h3>
+
+				  <p>
+					Associate in Applied Science (A.A.S.) in Information Technology
+				  </p>
+
+				  <p>
+					Concentration: Software Development
+				  </p>
+
+				  <p>
+					Graduation Year: 2026
+				  </p>
+
+				  
+				  <p> 
+					GPA: 3.466
+				  </p> 
+
+				</div>
+
+			</div>
+		  </section>
+
+		  <!-- SKILLS -->
+
+		  <section id="skills" class="page">
+			<div class="container">
+
+
+			  <h2>Technical Skills</h2>
+
+			  <div class="skills-grid">
+
+					<div class="skill">HTML5</div>
+					<div class="skill">CSS3</div>
+					<div class="skill">JavaScript</div>
+					<div class="skill">Java</div>
+					<div class="skill">PostgreSQL</div>
+					<div class="skill">Javafx</div>
+					<div class="skill">React.js</div>
+					<div class="skill">Node.js</div>
+					<div class="skill">MySQL</div>
+					<div class="skill">Git</div>
+					<div class="skill">GitHub</div>
+					<div class="skill">REST APIs</div>
+					<div class="skill">Office 365 Pro</div>
+					<div class="skill">Operating Systems</div>
+					<div class="skill">Networking</div>
+
+			  </div>
+
+			</div>
+
+
+		  </section>
+
+		  <!-- PROJECTS -->
+
+		  <section id="projects" class="page">
+			<div class="container">
+
+
+			   <h2>Featured Projects</h2>
+
+				  <div class="projects-grid">
+
+					<a href="https://github.com/IrengeTech/Movie-Savings-System"
+					   target="_blank"
+					   class="project-card">
+
+					  <h3>🎬 Movie Savings System</h3>
+
+					  <p>
+						A software solution designed to manage and track movie
+						savings, budgeting, and financial planning.
+					  </p>
+
+					</a>
+
+					<a href="https://github.com/IrengeTech/The-Weekly-Schedule"
+					   target="_blank"
+					   class="project-card">
+
+					  <h3>📅 The Weekly Schedule</h3>
+
+					  <p>
+						A scheduling application that helps users organize tasks,
+						responsibilities, and weekly activities efficiently.
+					  </p>
+
+					</a>
+
+					<a href="https://github.com/IrengeTech/Apartment-Management-System-"
+					   target="_blank"
+					   class="project-card">
+
+					  <h3>🏢 Apartment Management System</h3>
+
+					  <p>
+						A property management application focused on apartment
+						administration, tenant management, and rental records.
+					  </p>
+
+					</a>
+
+					<a href="https://github.com/IrengeTech/Task-Manager-API"
+					   target="_blank"
+					   class="project-card">
+
+					  <h3>⚙️ Task Manager API</h3>
+
+					  <p>
+						A RESTful API that enables users to create, update,
+						organize, and track tasks effectively.
+					  </p>
+
+					</a>
+
+				</div>
+
+			  <div class="github-section">
+
+					<p style="margin-bottom:20px;">
+					  Interested in exploring more projects?
+					</p>
+
+					<a href="https://github.com/IrengeTech"
+					   target="_blank"
+					   class="github-btn">
+					  View More Projects on GitHub →
+					</a>
+
+				</div>
+
+		   </div>
+
+		 </section>
+		  <!-- CERTIFICATIONS -->
+
+		 <section id="certifications" class="page">
+
+			<div class="container">
+
+			   <h2>Certifications</h2>
+
+				<div class="card education-card">
+
+				  <p><strong>Current Certificates</strong></p>
+					  <ul>
+						 <li>TestOut Office Pro Certification. July 14, 2024.</li>
+						 <li>Information Technology Fundamentals certification July 16, 2024</li>
+					  </ul>
+					
+					<br>
+				  <p><strong>Currently Pursuing:</strong></p>
+				  <ul>
+					<li>CompTIA A+</li>
+					<li>CompTIA Network+</li>
+					<li>CompTIA Security+</li>
+				  </ul>
+				</div>
+			</div>
+		 </section>
+
+		  <!-- CONTACT -->
+
+		  <section id="contact" class="page">
+			<div class="container">
+
+
+		  <h2>Contact Me</h2>
+
+		  <div class="card contact-links">
+
+			<p>
+			  📧 Email:
+			  <a href="mailto:dekandolcigoho@gmail.com">
+				dekandolcigoho@gmail.com
+			  </a>
+			</p>
+
+			<p>
+			  💼 LinkedIn:
+			  <a href="https://www.linkedin.com/in/irenge-dekandol-8339042ab"
+				 target="_blank">
+				 linkedin.com/in/irenge-dekandol-8339042ab
+			  </a>
+			</p>
+
+			<p>
+			  💻 GitHub:
+			  <a href="https://github.com/IrengeTech"
+				 target="_blank">
+				 github.com/IrengeTech
+			  </a>
+			</p>
+
+			<p>
+			  📄 Resume:
+			  <a href="assets/Irenge_Resume.pdf"
+				 target="_blank">
+				 Download Resume
+			  </a>
+			</p>
+
+			<br>
+
+			<p>
+			  I am always open to internships and job opportunities,
+			  <br>
+			  software engineering collaborations, freelance work,
+			  <br>
+			  and professional networking.
+			</p>
+
+		  </div>
+
+		</div>
+
+
+		  </section>
+
+		</main>
+
+		<footer>
+			  <div class="container">
+
+
+			<h3 style="margin-bottom:15px;">
+			  Irenge Dekandol
+			</h3>
+
+			<p style="margin-bottom:10px;">
+			  Information Technology graduate • Software Developer
+			</p>
+
+			<p style="margin-bottom:15px;">
+			  Building software solutions that make a difference.
+			</p>
+
+			<div style="margin-bottom:20px;">
+
+			  <a href="https://github.com/IrengeTech"
+				 target="_blank"
+				 style="color:white;margin-right:15px;">
+				 GitHub
+			  </a>
+
+			  <a href="https://www.linkedin.com/in/irenge-dekandol-8339042ab"
+				 target="_blank"
+				 style="color:white;">
+				 LinkedIn
+			  </a>
+
+			</div>
+
+			<p>
+			  &copy; 2026 Irenge Dekandol. All Rights Reserved.
+			</p>
+
+
+			</div>
+		</footer>
+
+		<script>
+
+			document.addEventListener('DOMContentLoaded', () => {
+
+			  const navLinks = document.querySelectorAll('.nav-link');
+			  const pages = document.querySelectorAll('.page');
+
+			  function showPage(pageId){
+
+				pages.forEach(page => {
+				  page.classList.remove('active');
+				});
+
+				const targetPage = document.getElementById(pageId);
+
+				if(targetPage){
+				  targetPage.classList.add('active');
+				}
+
+				navLinks.forEach(link => {
+				  link.classList.remove('active');
+				});
+
+				const activeLink =
+				  document.querySelector(
+					`.nav-link[data-page="${pageId}"]`
+				  );
+
+				if(activeLink){
+				  activeLink.classList.add('active');
+				}
+			  }
+
+			  navLinks.forEach(link => {
+
+				link.addEventListener('click', function(e){
+
+				  e.preventDefault();
+
+				  const pageId =
+					this.getAttribute('data-page');
+
+				  window.location.hash = pageId;
+
+				  showPage(pageId);
+
+				});
+
+			  });
+
+			  window.addEventListener('hashchange', () => {
+
+				const pageId =
+				  window.location.hash.substring(1);
+
+				if(pageId){
+				  showPage(pageId);
+				}
+
+			  });
+
+			  const initialPage =
+				window.location.hash.substring(1) || 'home';
+
+			  showPage(initialPage);
+
+			});
+			const themeToggle = document.getElementById('theme-toggle');
+
+			themeToggle.addEventListener('click', () => {
+
+				document.body.classList.toggle('dark-mode');
+
+				if (document.body.classList.contains('dark-mode')) {
+					themeToggle.textContent = '☀️ Light Mode';
+					localStorage.setItem('theme', 'dark');
+				} else {
+					themeToggle.textContent = '🌙 Dark Mode';
+					localStorage.setItem('theme', 'light');
+				}
+
+			});
+
+			const savedTheme = localStorage.getItem('theme');
+
+			if (savedTheme === 'dark') {
+				document.body.classList.add('dark-mode');
+				themeToggle.textContent = '☀️ Light Mode';
+			}
+
+		</script>
+
+    </body>
+</html>
